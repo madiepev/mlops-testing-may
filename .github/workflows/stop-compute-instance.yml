@@ -31,6 +31,6 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: Create Azure Machine Learning workspace
+    - name: Stop Azure Machine Learning compute instance
       run: |
         az ml compute stop -n "${{ github.event.inputs.compute }}" -w "${{ github.event.inputs.aml_workspace }}" -g "${{ github.event.inputs.resource_group }}"
