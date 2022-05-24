@@ -36,7 +36,9 @@ df = df.dropna()
 
 # normalize the numeric columns
 scaler = MinMaxScaler()
-num_cols = ['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree']
+num_cols = ['Pregnancies', 'PlasmaGlucose',
+            'DiastolicBloodPressure','TricepsThickness',
+            'SerumInsulin','BMI','DiabetesPedigree']
 df[num_cols] = scaler.fit_transform(df[num_cols])
 
 # log processed rows
