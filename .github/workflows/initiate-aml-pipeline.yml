@@ -6,13 +6,17 @@ on:
       resource_group:
         description: 'Resource group name'
         required: true
-        default: 'rg-dev-mlops' 
+        default: 'dev-aml-rg' 
         type: string
       aml_workspace:
         description: 'Azure Machine Learning workspace name'
         required: true
-        default: 'mlw-dev-mlops' 
+        default: 'dev-aml-ws' 
         type: string
+  pull_request:
+    branches:
+      - main
+      - 'releases/**'
 
 jobs:
   build:
