@@ -13,6 +13,10 @@ on:
         required: true
         default: 'mlw-dev-mlops' 
         type: string
+  pull_request:
+    branches:
+      - main
+      - 'releases/**'
 
 jobs:
   build:
