@@ -1,0 +1,31 @@
+name: Trigger Azure Machine Learning pipeline
+
+on:
+  workflow_dispatch:
+      
+  pull_request:
+    branches:
+      - main
+      - 'releases/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Set Azure ML workspace as default
+      run: |
+        az configure --defaults group="dev-aml-rg"
+        az configure --defaults workspace="dev-aml-ws"
+    - name: Trigger Azure Machine Learning pipeline
+      run: |
+        az ml job create --file src/pipeline.yml

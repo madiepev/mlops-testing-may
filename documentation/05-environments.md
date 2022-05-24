@@ -6,7 +6,7 @@ Use environments to isolate workloads and control the deployment of the model.
 
 ## Prerequisites
 
-If you haven't, complete the [set-up](00-set-up.md) before you continue.
+If you haven't, complete the [set-up](00-set-up.md) before you continue. **Your repo should be set to public**. If you're using a private repo without GitHub Enterprise Cloud, you'll not be able to create environments. [Change the visibility of your repo to public](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility) if your repo is set to private.
 
 You'll also need the GitHub Action that triggers the Azure Machine Learning pipeline created in Challenge 3. 
 

@@ -39,7 +39,11 @@ az ad sp create-for-rbac --name "github-aml-sp" --role contributor \
 
 To allow GitHub to create resources in the resource group in Azure, you'll create a GitHub secret that stores the information of the service principal.
 
-1. Fork this repo. 
+1. Create a new **public** repo by using this repo as a template.
+
+> **Note**:
+> Set the repo to public. If the repo is private, you'll not be able to create environments unless your organization uses GitHub Enterpise Cloud.
+
 2. Go to your new GitHub repo and navigate to the **Settings** tab.
 3. Under **Security**, select **Secrets > Actions**. 
 4. Create a **new repository secret**.
