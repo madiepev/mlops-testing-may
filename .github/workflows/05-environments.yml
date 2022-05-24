@@ -1,4 +1,4 @@
-name: Train a model in dev environment
+name: Work with environments
 
 on:
   workflow_dispatch:
@@ -40,6 +40,10 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Set Azure ML workspace as default
+      run: |
+        az configure --defaults group="dev-aml-rg"
+        az configure --defaults workspace="dev-aml-ws"
     - name: List model
       run: |
         az ml model list
