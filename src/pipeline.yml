@@ -35,6 +35,6 @@ jobs:
     environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
     compute: azureml:aml-cluster
     command: >-
-      python train-decision-tree.py 
+      python train-functions.py 
       --training_data ${{inputs.training_data}} 
       --model_output ${{outputs.model_output}}

@@ -1,0 +1,30 @@
+name: Verify code quality
+
+on:
+  workflow_dispatch:
+    inputs:
+      resource_group:
+        description: 'Resource group name'
+        required: true
+        default: 'rg-dev-mlops' 
+        type: string
+      aml_workspace:
+        description: 'Azure Machine Learning workspace name'
+        required: true
+        default: 'mlw-dev-mlops' 
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Use Python version 3.7
+      uses: actions/setup-python@v3.7
+    - name: Install Flake8
+      run: |
+        python -m pip install flake8
+    - name: Run linting tests
+      run: | 
+        flake8 src/model/
