@@ -28,7 +28,7 @@ def separate_data(df):
                'DiastolicBloodPressure', 'TricepsThickness',
                'SerumInsulin', 'BMI', 'DiabetesPedigree',
                'Age']].values, df['Diabetic'].values
-   
+
     return X, y
 
 
@@ -86,8 +86,10 @@ def main():
 
     # Get parameters
     parser = argparse.ArgumentParser("train")
-    parser.add_argument("--training_data", type=str, help="Path to training data")
-    parser.add_argument("--model_output", type=str, help="Path of output model")
+    parser.add_argument("--training_data", type=str,
+                        help="Path to training data")
+    parser.add_argument("--model_output", type=str,
+                        help="Path of output model")
 
     args = parser.parse_args()
 
