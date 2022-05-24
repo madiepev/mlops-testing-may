@@ -18,7 +18,7 @@ jobs:
         mode: upload
     code: model
     environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-    compute: azureml:madiepev3
+    compute: azureml:aml-cluster
     command: >-
       python prep-data.py 
       --input_data ${{inputs.raw_data}} 
@@ -33,7 +33,7 @@ jobs:
         mode: upload
     code: model
     environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-    compute: azureml:madiepev3
+    compute: azureml:aml-cluster
     command: >-
       python train-decision-tree.py 
       --training_data ${{inputs.training_data}} 
