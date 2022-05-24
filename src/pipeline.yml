@@ -8,8 +8,8 @@ experiment_name: diabetes-pipeline-example
 
 outputs:
   trained_model:
-    type: uri_folder
-    path: azureml://datastores/workspaceblobstore/paths/output-model/
+    type: mlflow_model
+    mode: upload
 
 jobs:
 
