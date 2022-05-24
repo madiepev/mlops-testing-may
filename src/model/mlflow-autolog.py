@@ -60,7 +60,7 @@ def parse_args():
     # add arguments
     parser.add_argument("--training_data", type=str,
                         help="Path to training data")
-    parser.add_argument("--reg-rate", dest='reg_rate',
+    parser.add_argument("--reg_rate", dest='reg_rate',
                         type=float, default=0.01)
     parser.add_argument("--model_output", type=str,
                         help="Path of output model")
