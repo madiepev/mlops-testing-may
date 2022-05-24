@@ -1,4 +1,4 @@
-name: Trigger Azure Machine Learning pipeline
+name: Manually trigger an Azure Machine Learning pipeline
 
 on:
   workflow_dispatch:

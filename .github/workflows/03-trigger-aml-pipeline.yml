@@ -1,4 +1,4 @@
-name: Trigger Azure Machine Learning pipeline
+name: Trigger Azure Machine Learning pipeline by merging pull request
 
 on:
   pull_request:

@@ -5,6 +5,12 @@ description: Train model with diabetes data
 
 display_name: diabetes-pipeline-example
 experiment_name: diabetes-pipeline-example
+
+outputs:
+  trained_model:
+    type: uri_folder
+    path: azureml://datastores/workspaceblobstore/paths/output-model/
+
 jobs:
 
   prep_job:
@@ -28,13 +34,14 @@ jobs:
     type: command
     inputs:
       training_data: ${{parent.jobs.prep_job.outputs.prep_data}}
+      reg_rate: 0.01
     outputs:
-      model_output: 
-        mode: upload
+      model_output: ${{parent.outputs.trained_model}}
     code: model
     environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
     compute: azureml:aml-cluster
     command: >-
-      python train-functions.py 
-      --training_data ${{inputs.training_data}} 
+      python mlflow-autolog.py 
+      --training_data ${{inputs.training_data}}
+      --reg_rate ${{inputs.reg_rate}}  
       --model_output ${{outputs.model_output}}
