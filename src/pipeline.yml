@@ -8,8 +8,7 @@ experiment_name: diabetes-pipeline-example
 
 outputs:
   trained_model:
-    type: mlflow_model
-    mode: upload
+    path: azureml://datastores/workspaceblobstore/paths/mlflow-model-folder/
 
 jobs:
 
@@ -41,7 +40,7 @@ jobs:
     environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
     compute: azureml:aml-cluster
     command: >-
-      python mlflow-autolog.py 
+      python train-functions.py 
       --training_data ${{inputs.training_data}}
-      --reg_rate ${{inputs.reg_rate}}  
-      --model_output ${{outputs.model_output}}
+      --reg_rate ${{inputs.reg_rate}}
+

@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
 import matplotlib.pyplot as plt
-import pickle
+# import pickle
 from pathlib import Path
 
 
@@ -34,18 +34,19 @@ def main(args):
     # Train model
     model = train_model(X_train, y_train)
     # Output the model
-    pickle.dump(model, open((Path(args.model_output) / "model.sav"), "wb"))
+    mlflow.sklearn.save_model(model, path=args.model_output)
+    # pickle.dump(model, open((Path(args.model_output) / "model.sav"), "wb"))
 
-    # # Calculate accuracy
-    # acc = calculate_acc(model, X_test, y_test)
-    # mlflow.log_metric('Accuracy', np.float(acc))
+    # Calculate accuracy
+    acc = calculate_acc(model, X_test, y_test)
+    mlflow.log_metric('Accuracy', np.float(acc))
 
-    # # Calculate AUC
-    # y_scores, auc = calculate_auc(model, X_test, y_test)
-    # mlflow.log_metric('AUC', np.float(auc))
+    # Calculate AUC
+    y_scores, auc = calculate_auc(model, X_test, y_test)
+    mlflow.log_metric('AUC', np.float(auc))
 
-    # # Plot ROC
-    # plot_roc(y_test, y_scores)
+    # Plot ROC
+    plot_roc(y_test, y_scores)
 
 
 # Load the prepared data file in the training folder
@@ -83,37 +84,37 @@ def train_model(X_train, y_train):
     return model
 
 
-# # Calculate accuracy
-# def calculate_acc(model, X_test, y_test):
-#     y_hat = model.predict(X_test)
-#     acc = np.average(y_hat == y_test)
-#     print('Accuracy:', acc)
+# Calculate accuracy
+def calculate_acc(model, X_test, y_test):
+    y_hat = model.predict(X_test)
+    acc = np.average(y_hat == y_test)
+    print('Accuracy:', acc)
 
-#     return acc
-
-
-# # Calculate AUC
-# def calculate_auc(model, X_test, y_test):
-#     y_scores = model.predict_proba(X_test)
-#     auc = roc_auc_score(y_test, y_scores[:, 1])
-#     print('AUC: ' + str(auc))
-
-#     return y_scores, auc
+    return acc
 
 
-# # Plot ROC curve
-# def plot_roc(y_test, y_scores):
-#     fpr, tpr, thresholds = roc_curve(y_test, y_scores[:, 1])
-#     plt.figure(figsize=(6, 4))
-#     # Plot the diagonal 50% line
-#     plt.plot([0, 1], [0, 1], 'k--')
-#     # Plot the FPR and TPR achieved by our model
-#     plt.plot(fpr, tpr)
-#     plt.xlabel('False Positive Rate')
-#     plt.ylabel('True Positive Rate')
-#     plt.title('ROC Curve')
-#     plt.savefig("ROCcurve.png")
-#     mlflow.log_artifact("ROCcurve.png")
+# Calculate AUC
+def calculate_auc(model, X_test, y_test):
+    y_scores = model.predict_proba(X_test)
+    auc = roc_auc_score(y_test, y_scores[:, 1])
+    print('AUC: ' + str(auc))
+
+    return y_scores, auc
+
+
+# Plot ROC curve
+def plot_roc(y_test, y_scores):
+    fpr, tpr, thresholds = roc_curve(y_test, y_scores[:, 1])
+    plt.figure(figsize=(6, 4))
+    # Plot the diagonal 50% line
+    plt.plot([0, 1], [0, 1], 'k--')
+    # Plot the FPR and TPR achieved by our model
+    plt.plot(fpr, tpr)
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC Curve')
+    plt.savefig("ROCcurve.png")
+    mlflow.log_artifact("ROCcurve.png")
 
 
 # Get parameters
