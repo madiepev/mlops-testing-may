@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: diabetes-mlflow-example
+path: azureml://datastores/workspaceblobstore/paths/mlflow-model-folder/
+type: mlflow_model
+description: Model created from pipeline output stored in default datastore.
