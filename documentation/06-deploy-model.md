@@ -12,9 +12,9 @@ You'll also need the GitHub Action that triggers the Azure Machine Learning pipe
 
 By completing this challenge, you'll learn how to:
 
-- Set up a development and production environment.
-- Add environments to GitHub Action.
-- Add a required reviewer to the staging job environment.
+- Register the model with GitHub Actions.
+- Deploy the model to an online endpoint with GitHub Actions.
+- Test the deployed model.
 
 ## Tasks
 
