@@ -25,7 +25,7 @@ jobs:
     - name: Azure login
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}
+        creds: ${{secrets.CLOUDSLICE_CREDENTIALS}}
     - name: Create Azure Machine Learning workspace
       run: |
         az ml workspace create --name "${{ github.event.inputs.aml_workspace }}" --resource-group "${{ github.event.inputs.resource_group }}"
