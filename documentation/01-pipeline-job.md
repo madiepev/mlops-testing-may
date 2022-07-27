@@ -10,7 +10,6 @@ If you haven't, complete the [set-up](00-set-up.md) before you continue.
 
 By completing this challenge, you'll learn how to:
 
-- Convert a notebook into multiple scripts.
 - Define an Azure Machine Learning pipeline job in YAML.
 - Run an Azure Machine Learning pipeline job with the CLI v2.
 
