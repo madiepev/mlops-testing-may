@@ -1,10 +1,10 @@
 name: Verify code quality
 
-on:
-  workflow_dispatch:
+on: pull_request
 
 jobs:
   build:
+    name: linting
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
