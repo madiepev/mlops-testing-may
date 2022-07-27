@@ -1,0 +1,11 @@
+[stderr]2022/05/25 14:26:30 INFO mlflow.tracking.fluent: Autologging successfully enabled for sklearn.
+[stderr]2022/05/25 14:26:31 INFO mlflow.utils.autologging_utils: Created MLflow autologging run with ID 'bubbly_receipt_d3mph4k87v', which will track hyperparameters, performance metrics, model artifacts, and lineage information for the current sklearn workflow
+[stderr]2022/05/25 14:26:35 WARNING mlflow.utils.autologging_utils: MLflow autologging encountered a warning: "/azureml-envs/sklearn-0.24.1/lib/python3.7/site-packages/_distutils_hack/__init__.py:30: UserWarning: Setuptools is replacing distutils."
+
+
+
+************************************************************
+************************************************************
+
+
+
